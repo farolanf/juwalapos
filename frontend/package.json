@@ -1,0 +1,70 @@
+{
+  "name": "gatsby-starter-default",
+  "private": true,
+  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "version": "0.1.0",
+  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.12",
+    "@fortawesome/free-brands-svg-icons": "^5.6.3",
+    "@fortawesome/free-solid-svg-icons": "^5.6.3",
+    "@fortawesome/react-fontawesome": "^0.1.3",
+    "@material-ui/core": "^3.8.1",
+    "@material-ui/icons": "^3.0.1",
+    "@reach/router": "^1.2.1",
+    "axios": "^0.18.0",
+    "change-case": "^3.1.0",
+    "classnames": "^2.2.6",
+    "eslint": "^5.11.1",
+    "eslint-plugin-react": "^7.12.2",
+    "extract-react-intl-messages": "^0.11.2",
+    "gatsby": "^2.0.76",
+    "gatsby-image": "^2.0.20",
+    "gatsby-plugin-manifest": "^2.0.9",
+    "gatsby-plugin-offline": "^2.0.16",
+    "gatsby-plugin-react-helmet": "^3.0.2",
+    "gatsby-plugin-sharp": "^2.0.14",
+    "gatsby-plugin-tailwindcss": "^1.0.3",
+    "gatsby-source-filesystem": "^2.0.8",
+    "gatsby-transformer-sharp": "^2.1.8",
+    "lodash": "^4.17.11",
+    "prop-types": "^15.6.2",
+    "react": "^16.8.0-alpha.1",
+    "react-dom": "^16.8.0-alpha.1",
+    "react-helmet": "^5.2.0",
+    "react-intl": "^2.8.0",
+    "react-jss": "^8.6.1",
+    "react-number-format": "^4.0.6",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.1",
+    "redux-actions": "^2.6.4",
+    "redux-saga": "^1.0.0",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^4.1.3",
+    "tailwindcss": "^0.7.3",
+    "typeface-roboto": "0.0.54",
+    "url": "^0.11.0"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "start": "npm run develop",
+    "format": "prettier --write \"src/**/*.js\"",
+    "translate": "extract-messages -l=en,id -d en --flat true -o translations/generated 'src/**/*.js'",
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+  },
+  "devDependencies": {
+    "prettier": "^1.15.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+  },
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  }
+}

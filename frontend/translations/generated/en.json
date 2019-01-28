@@ -1,0 +1,12 @@
+{
+  "ads.new.desc": "Ad description",
+  "ads.new.descHelp": "Describe the product in detail, with minus, if any. Be honest, people will like it.",
+  "ads.new.pageTitle": "New Ad",
+  "ads.new.title": "Ad title",
+  "ads.new.titleHelp": "Create a short concise title describing the product.",
+  "cancel": "Cancel",
+  "login": "Login",
+  "login.with": "Or login with",
+  "profile.greeting": "Hello, you have {count, plural, one {an email} other {# emails}}",
+  "register": "Register"
+}

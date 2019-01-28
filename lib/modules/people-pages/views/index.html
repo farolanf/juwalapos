@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block title %}{{ data.page.title }}{% endblock %}
+
+{% block main %}
+  {# Link to all the tags, adding a parameter to the query string #}
+  <ul class="tag-filters">
+    {% for tag in data.piecesFilters.tags %}
+      <li><a href="{{ data.url | build({ tags: tag.value }) }}">{{ tag.label }}</a></li>
+    {% endfor %}
+  </ul>
+  <div data-apos-ajax-context="people">
+    {% include "indexAjax.html" %}
+  </div>
+  {% import 'apostrophe-pager:macros.html' as pager with context %}
+  {{ pager.render({ page: data.currentPage, total: data.totalPages }, data.url) }}
+{% endblock %}
