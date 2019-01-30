@@ -1,6 +1,7 @@
 package-lock.json
 /locales
 npm-debug.log
+*.log
 /data
 /public/uploads
 /public/apos-minified
