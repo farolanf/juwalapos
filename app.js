@@ -21,7 +21,6 @@ var apos = require('apostrophe')({
 
     'apostrophe-headless': {},
     'apostrophe-passport': {},
-    'apostrophe-templates': {},
     'link-widgets': {},
     'page-link-widgets': {},
     'people': {},
