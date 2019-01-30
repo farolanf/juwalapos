@@ -22,14 +22,14 @@ import { login, register, loginRedirect } from '../modules/auth';
 import Alert from '$comp/Alert'
 
 const styles = () => ({
-  buttonIcon: tw`text-xl mr-2` 
+  buttonIcon: tw`text-xl mr-2`
 })
 
 const LoginBox = ({ open, onClose, fetchUser, classes }) => {
   const [errorMessage, setErrorMessage] = useState('')
 
   const [mode, setMode] = useState('login')
-  const otherMode = mode === 'login' ? 'register' : 'login'  
+  const otherMode = mode === 'login' ? 'register' : 'login'
 
   useEffect(() => {
     if (open) {
@@ -128,7 +128,7 @@ const LoginBox = ({ open, onClose, fetchUser, classes }) => {
               <Button
                 variant='contained'
                 color='secondary'
-                href={API_HOST + '/connect/facebook'}
+                href={API_HOST + '/auth/facebook/login'}
               >
                 <FontAwesomeIcon icon={faFacebook} className={classes.buttonIcon} />
                 Facebook
@@ -138,7 +138,7 @@ const LoginBox = ({ open, onClose, fetchUser, classes }) => {
               <Button
                 variant='contained'
                 color='secondary'
-                href={API_HOST + '/connect/google'}
+                href={API_HOST + '/auth/google/login'}
               >
                 <FontAwesomeIcon icon={faGoogle} className={classes.buttonIcon} />
                 Google
