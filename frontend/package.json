@@ -15,6 +15,7 @@
     "axios": "^0.18.0",
     "change-case": "^3.1.0",
     "classnames": "^2.2.6",
+    "cookie": "^0.3.1",
     "eslint": "^5.11.1",
     "eslint-plugin-react": "^7.12.2",
     "extract-react-intl-messages": "^0.11.2",

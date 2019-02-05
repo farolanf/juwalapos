@@ -17,6 +17,8 @@
     "apostrophe": "^2.47.0",
     "apostrophe-headless": "^2.7.0",
     "apostrophe-passport": "^2.1.0",
+    "js-yaml": "^3.12.1",
+    "jsonwebtoken": "^8.4.0",
     "passport-facebook": "^3.0.0",
     "passport-google-oauth20": "^1.0.0"
   },
