@@ -4,22 +4,20 @@ import url from 'url'
 
 import Layout from '$comp/layout'
 
-import { connect, loginRedirect } from '$src/modules/auth'
+import { saveToken, loginRedirect } from '$src/modules/auth'
 
 const ConnectPage = ({ fetchUser }) => {
   const urlObj = url.parse(window.location.href, true)
-  
+
   useEffect(() => {
-    connect(urlObj.query.provider, window.location.search)
-      .then(() => {
-        fetchUser()
-        loginRedirect()
-      })
+    saveToken(urlObj.query.token)
+    fetchUser()
+    loginRedirect()
   }, [])
-  
+
   return (
     <Layout>
-      Connecting to {urlObj.query.provider}
+      Initializing session...
     </Layout>
   )
 }

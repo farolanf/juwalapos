@@ -1,7 +1,20 @@
 import axios from 'axios'
+import cookie from 'cookie'
 import { navigate } from '@reach/router'
 
 import { API_HOST } from '$src/const'
+
+axios.interceptors.request.use(config => {
+  const cookies = cookie.parse(document.cookie)
+  config.headers['X-XSRF-TOKEN'] = cookies['apos.csrf']
+  console.log('cookie', cookies['apos.csrf'])
+  return config
+})
+
+axios.interceptors.response.use(response => {
+  console.log('response', response)
+  return response
+})
 
 export const saveToken = token => {
   localStorage.setItem('token', token)
@@ -21,17 +34,6 @@ export const storeReferer = () => {
 }
 
 export const loadReferer = () => localStorage.getItem('referer')
-
-export const connect = (provider, search) => {
-  const url = `${API_HOST}/auth/${provider}/callback${search}`
-  return axios
-    .get(url)
-    .then(res => {
-      saveToken(res.data.jwt)
-    })
-    // eslint-disable-next-line
-    .catch(console.log)
-}
 
 export const register = (username, email, password) => {
   return axios

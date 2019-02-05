@@ -1,5 +1,6 @@
 var apos = require('apostrophe')({
   shortName: 'apos',
+
   baseUrl: 'http://localhost:3000',
 
   // See lib/modules for basic project-level configuration of our modules
@@ -21,8 +22,13 @@ var apos = require('apostrophe')({
 
     'apostrophe-headless': {},
     'apostrophe-passport': {},
+
+    'cors': {},
+    'auth': {},
+
     'link-widgets': {},
     'page-link-widgets': {},
+
     'people': {},
     'people-widgets': {},
     'people-pages': {},

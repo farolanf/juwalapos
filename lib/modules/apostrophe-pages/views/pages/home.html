@@ -18,6 +18,9 @@
         'apostrophe-images': {
           size: 'full'
         },
+        'people': {
+        },
+        'apostrophe-video': {},
         'apostrophe-rich-text': {
           toolbar: [ 'Styles', 'Bold', 'Italic', 'Link', 'Unlink' ],
           styles: [
@@ -28,5 +31,12 @@
         }
       }
     }) }}
+    {{
+      apos.singleton(
+        data.page,
+        'video',
+        'apostrophe-video'
+      )
+    }}
   </div>
 {% endblock %}
