@@ -23,6 +23,7 @@ var apos = require('apostrophe')({
     'apostrophe-headless': {},
     'apostrophe-passport': {},
 
+    'devel': {},
     'cors': {},
     'auth': {},
 
