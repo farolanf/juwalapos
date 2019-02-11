@@ -1,20 +1,7 @@
 import axios from 'axios'
-import cookie from 'cookie'
 import { navigate } from '@reach/router'
 
 import { API_HOST } from '$src/const'
-
-axios.interceptors.request.use(config => {
-  const cookies = cookie.parse(document.cookie)
-  config.headers['X-XSRF-TOKEN'] = cookies['apos.csrf']
-  console.log('cookie', cookies['apos.csrf'])
-  return config
-})
-
-axios.interceptors.response.use(response => {
-  console.log('response', response)
-  return response
-})
 
 export const saveToken = token => {
   localStorage.setItem('token', token)
@@ -37,7 +24,7 @@ export const loadReferer = () => localStorage.getItem('referer')
 
 export const register = (username, email, password) => {
   return axios
-    .post(API_HOST + '/auth/local/register', {
+    .post(API_HOST + '/api/auth/register', {
       username,
       email,
       password,
@@ -49,7 +36,7 @@ export const register = (username, email, password) => {
 
 export const login = (email, password) => {
   return axios
-    .post(API_HOST + '/auth/local', {
+    .post(API_HOST + '/api/auth/login', {
       identifier: email,
       password,
     })

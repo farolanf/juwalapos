@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { FormattedMessage } from 'react-intl'
 import { navigate } from '@reach/router'
+import _ from 'lodash'
 
 import Dialog from '@material-ui/core/Dialog'
 import DialogTitle from '@material-ui/core/DialogTitle'
@@ -21,6 +22,9 @@ import { login, register, loginRedirect } from '../modules/auth';
 
 import Alert from '$comp/Alert'
 
+import useValidateEffect from 'juwal-validation/useValidateEffect'
+import registerSchema from 'juwal-validation/register'
+
 const styles = () => ({
   buttonIcon: tw`text-xl mr-2`
 })
@@ -31,6 +35,10 @@ const LoginBox = ({ open, onClose, fetchUser, classes }) => {
   const [mode, setMode] = useState('login')
   const otherMode = mode === 'login' ? 'register' : 'login'
 
+  function toggleMode () {
+    setMode(otherMode)
+  }
+
   useEffect(() => {
     if (open) {
       setErrorMessage('')
@@ -38,13 +46,18 @@ const LoginBox = ({ open, onClose, fetchUser, classes }) => {
     }
   }, [open])
 
-  function toggleMode () {
-    setMode(otherMode)
-  }
-
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirm, setPasswordConfirm] = useState('')
+
+  const errors = useValidateEffect({
+    schema: registerSchema,
+    data: [
+      { email },
+      { password, passwordConfirm },
+    ],
+    condition: mode === 'register'
+  })
 
   async function handleSubmit (e) {
     e.preventDefault()
@@ -88,6 +101,8 @@ const LoginBox = ({ open, onClose, fetchUser, classes }) => {
                 fullWidth
                 value={email}
                 onChange={e => setEmail(e.target.value)}
+                helperText={errors.msg.email}
+                error={!!errors.msg.email}
               />
             </Grid>
             <Grid item xs={12}>
@@ -99,6 +114,8 @@ const LoginBox = ({ open, onClose, fetchUser, classes }) => {
                 margin='normal'
                 value={password}
                 onChange={e => setPassword(e.target.value)}
+                helperText={errors.msg.password}
+                error={!!errors.msg.password}
               />
             </Grid>
             {mode === 'register' && (
@@ -111,7 +128,9 @@ const LoginBox = ({ open, onClose, fetchUser, classes }) => {
                   margin='normal'
                   value={passwordConfirm}
                   onChange={e => setPasswordConfirm(e.target.value)}
-                />
+                  helperText={errors.msg.passwordConfirm}
+                  error={!!errors.msg.passwordConfirm}
+                  />
               </Grid>
             )}
           </Grid>
@@ -157,7 +176,7 @@ const LoginBox = ({ open, onClose, fetchUser, classes }) => {
               <FormattedMessage id='login' defaultMessage='Login' />
             )}
           </Button>
-          <Button variant='contained' color='primary' type='submit'>
+          <Button variant='contained' color='primary' type='submit' disabled={mode === 'register' && !errors.ok}>
             {mode === 'login' ? (
               <FormattedMessage id='login' defaultMessage='Login' />
             ) : (
