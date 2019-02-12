@@ -34,9 +34,9 @@ const validate = require('./validate')
  * @param {object} options Options
  */
 function useValidateEffect(options) {
-  options = _.defaults({
+  options = _.defaults(options, {
     condition: true
-  }, options)
+  })
 
   const dataList = Array.isArray(options.data) ? options.data : [options.data]
 
@@ -55,15 +55,17 @@ function useValidateEffect(options) {
         function update(newMsgs) {
           newMsgs = _.pick(newMsgs, Object.keys(data))
           newMsgs = _.mapValues(newMsgs, val => val[0])
-          const mergedMsgs = _.assign({}, errors.msg, newMsgs)
-          Object.keys(data).forEach(name => {
-            if (!newMsgs[name]) {
-              mergedMsgs[name] = ''
+          setErrors(errors => {
+            const mergedMsgs = _.assign({}, errors.msg, newMsgs)
+            Object.keys(data).forEach(name => {
+              if (!newMsgs[name]) {
+                mergedMsgs[name] = ''
+              }
+            })
+            return {
+              msg: mergedMsgs,
+              ok: !_.find(mergedMsgs, val => val !== '')
             }
-          })
-          setErrors({
-            msg: mergedMsgs,
-            ok: !_.find(mergedMsgs, val => val !== '')
           })
         }
       }
