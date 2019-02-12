@@ -1,22 +1,8 @@
-import validate from 'validate.js'
-import _ from 'lodash'
+const validate = require('validate.js')
+const _ = require('lodash')
 
-const options = {
-  presence: {
-    allowEmpty: false,
-    message: '^Harus diisi'
-  },
-  email: {
-    message: '^Harus berupa alamat email'
-  },
-  length: {
-    tooShort: '^Minimal %{count} karakter',
-    tooLong: '^Maksimal %{count} karakter'
-  },
-  equality: {
-
-  }
-}
+const options = require('./options')
+require('./validators')
 
 _.each(validate.validators, (validator, name) => {
   if (options[name]) {
@@ -24,4 +10,4 @@ _.each(validate.validators, (validator, name) => {
   }
 })
 
-export default validate
+module.exports = validate

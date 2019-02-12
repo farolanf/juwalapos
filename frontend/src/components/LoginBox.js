@@ -23,7 +23,13 @@ import { login, register, loginRedirect } from '../modules/auth';
 import Alert from '$comp/Alert'
 
 import useValidateEffect from 'juwal-validation/useValidateEffect'
-import registerSchema from 'juwal-validation/register'
+import RegisterSchema from 'juwal-validation/register'
+
+const registerSchema = RegisterSchema({
+  uniqueEmail: {
+    url: API_HOST + '/api/auth/unique-email'
+  }
+})
 
 const styles = () => ({
   buttonIcon: tw`text-xl mr-2`

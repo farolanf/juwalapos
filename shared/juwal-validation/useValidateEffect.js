@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
-import _ from 'lodash'
-import validate from './validate'
+const { useState, useEffect } = require('react')
+const _ = require('lodash')
+
+const validate = require('./validate')
 
 /**
  * Perform validation on data change.
@@ -32,7 +33,7 @@ import validate from './validate'
  *
  * @param {object} options Options
  */
-export default function useValidateEffect(options) {
+function useValidateEffect(options) {
   options = _.defaults({
     condition: true
   }, options)
@@ -49,22 +50,27 @@ export default function useValidateEffect(options) {
   dataList.forEach(data => {
     useEffect(() => {
       if (options.condition) {
-        let newMsgs = validate(data, options.schema)
-        newMsgs = _.pick(newMsgs, Object.keys(data))
-        newMsgs = _.mapValues(newMsgs, val => val[0])
-        const mergedMsgs = _.assign({}, errors.msg, newMsgs)
-        Object.keys(data).forEach(name => {
-          if (!newMsgs[name]) {
-            mergedMsgs[name] = ''
-          }
-        })
-        setErrors({
-          msg: mergedMsgs,
-          ok: !_.find(mergedMsgs, val => val !== '')
-        })
+        validate.async(data, options.schema).then(update, update)
+
+        function update(newMsgs) {
+          newMsgs = _.pick(newMsgs, Object.keys(data))
+          newMsgs = _.mapValues(newMsgs, val => val[0])
+          const mergedMsgs = _.assign({}, errors.msg, newMsgs)
+          Object.keys(data).forEach(name => {
+            if (!newMsgs[name]) {
+              mergedMsgs[name] = ''
+            }
+          })
+          setErrors({
+            msg: mergedMsgs,
+            ok: !_.find(mergedMsgs, val => val !== '')
+          })
+        }
       }
     }, Object.values(data))
   })
 
   return errors
 }
+
+module.exports = useValidateEffect

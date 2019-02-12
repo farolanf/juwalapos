@@ -9,6 +9,7 @@
   "author": "Farolan Faisal <farolanfaisal@gmail.com>",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
     "lodash": "^4.17.11",
     "validate.js": "^0.12.0"
   },
