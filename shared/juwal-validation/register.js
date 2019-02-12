@@ -18,7 +18,10 @@ module.exports = function(options) {
     },
     passwordConfirm: {
       presence: true,
-      equality: 'password'
+      equality: {
+        attribute: 'password',
+        message: '^Harus sama dengan password'
+      }
     }
   }
 }
