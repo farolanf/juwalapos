@@ -13,7 +13,7 @@ export const logout = createAction('LOGOUT')
 export const fetchUser = () => dispatch => {
   dispatch(fetchUserAsync.requested())
   return axios
-    .get(API_HOST + '/users/me')
+    .post(API_HOST + '/api/auth/verify')
     .then(res => {
       dispatch(fetchUserAsync.success({ data: res.data }))
     })
