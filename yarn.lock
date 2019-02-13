@@ -1654,6 +1654,11 @@ http-signature@~1.2.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
+http-status-codes@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/http-status-codes/-/http-status-codes-1.3.0.tgz#9cd0e71391773d0671b489d41cbc5094aa4163b6"
+  integrity sha1-nNDnE5F3PQZxtInUHLxQlKpBY7Y=
+
 humanname@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/humanname/-/humanname-0.2.2.tgz#65371baeddfa44e75733139acf13b80e20723c6e"
