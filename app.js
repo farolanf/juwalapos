@@ -20,12 +20,12 @@ var apos = require('apostrophe')({
     // If a template is not found somewhere else, serve it from the top-level
     // `views/` folder of the project
 
+    'devel': {},
+    'auth': {},
+    'cors': {},
+
     'apostrophe-headless': {},
     'apostrophe-passport': {},
-
-    'devel': {},
-    'cors': {},
-    'auth': {},
 
     'link-widgets': {},
     'page-link-widgets': {},
